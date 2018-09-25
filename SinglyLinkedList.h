@@ -86,34 +86,31 @@ void SinglyLinkedList<T>::clear() {
 
 template<typename T>
 void SinglyLinkedList<T>::pushFront(T newData) {
+    Node<T>* temp = head;
+    head = new Node<T>();
+    head->data = newData;
+    head->nextPtr = temp;
+
     if (isEmpty()) {
-        head = new Node<T>();
-        head->data = newData;
-        head->nextPtr = nullptr;
         tail = head;
-    } else {
-        Node<T>* temp = head;
-        head = new Node<T>();
-        head->data = newData;
-        head->nextPtr = temp;
     }
+
     size++;
 }
 
 template<typename T>
 void SinglyLinkedList<T>::pushBack(T newData) {
+    Node<T>* temp = tail;
+    tail = new Node<T>();
+    tail->data = newData;
+    tail->nextPtr = nullptr;
+
     if (isEmpty()) {
-        head = new Node<T>();
-        head->data = newData;
-        head->nextPtr = nullptr;
-        tail = head;
+        head = tail;
     } else {
-        Node<T>* temp = tail;
-        tail = new Node<T>();
-        tail->data = newData;
-        tail->nextPtr = nullptr;
         temp->nextPtr = tail;
     }
+
     size++;
 }
 
