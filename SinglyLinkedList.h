@@ -86,45 +86,53 @@ void SinglyLinkedList<T>::clear() {
 
 template<typename T>
 void SinglyLinkedList<T>::pushFront(T newData) {
-    if (isEmpty()) {
-        head = new Node<T>();
-        head->data = newData;
-        head->nextPtr = nullptr;
-        tail = head;
+    // Construct new node
+    Node<T>* newNode = new Node();
+    newNode->data = newData;
+    newNode->nextPtr = nullptr;
+
+    if (head == nullptr) {          // List empty
+        head = newNode;
+        tail = newNode;
     } else {
-        Node<T>* temp = head;
-        head = new Node<T>();
-        head->data = newData;
-        head->nextPtr = temp;
+        newNode->nextPtr = head;
+        head = newNode;
     }
     size++;
 }
 
 template<typename T>
 void SinglyLinkedList<T>::pushBack(T newData) {
-    if (isEmpty()) {
-        head = new Node<T>();
-        head->data = newData;
-        head->nextPtr = nullptr;
-        tail = head;
+    // Construct new node
+    Node<T>* newNode = new Node();
+    newNode->data = newData;
+    newNode->nextPtr = nullptr;
+
+    if (head == nullptr) {          // List empty
+        head = newNode;
+        tail = newNode;
     } else {
-        Node<T>* temp = tail;
-        tail = new Node<T>();
-        tail->data = newData;
-        tail->nextPtr = nullptr;
-        temp->nextPtr = tail;
+        tail->nextPtr = newNode;
+        tail = newNode
     }
     size++;
 }
 
 template<typename T>
 void SinglyLinkedList<T>::insertAfter(Node<T>* pos, T newData) {
-    if (isEmpty()) {
-        pushFront(newData);
+    // Construct new node
+    Node<T>* newNode = new Node<T>();
+    newNode->data = newData;
+    newNode->nextPtr = nullptr;
+
+    if (isEmpty()) {                // List empty
+        head = newNode;
+        tail = newNode;
+    } else if (pos == tail) {       // Insert after tail
+        tail->nextPtr = newNode;
+        tail = newNode;
     } else {
-        Node<T>* newNode = new Node<T>();
-        newNode->data = newData;
-        newNode->nextPtr = pos->nextPtr;
+        tail->nextPtr = pos->nextPtr;
         pos->nextPtr = newNode;
     }
     size++;
