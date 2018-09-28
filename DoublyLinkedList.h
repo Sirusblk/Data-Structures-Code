@@ -174,14 +174,14 @@ void DoublyLinkedList<T>::remove(Node<T>* pos) {
         prevNode->nextPtr = nextNode;
     }
 
-    if (head == pos) {          // Remove head
+    if (pos == head) {          // Remove head
         head = nextNode;
     }
 
-    if (tail == pos) {          // Remove tail
+    if (pos == tail) {          // Remove tail
         tail = prevNode;
     }
 
-    // delete pos;
+    delete pos;
     size--;
 }
