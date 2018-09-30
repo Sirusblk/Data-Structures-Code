@@ -6,6 +6,8 @@ using namespace std;
 
 int main() {
     IteratorLinkedList<int> numbers;
+
+    // Seed random numbers with the current time
     srand(time(NULL));
 
     for (int i = 0; i < 20; i++) {
