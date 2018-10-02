@@ -4,7 +4,7 @@ using namespace std;
 template <typename T>
 class Stack {
 private:
-    forward_list<T> list;
+    forward_list<T> myStack;
     int size;
 public:
     Stack();
@@ -23,27 +23,27 @@ Stack<T>::Stack() {
 
 template <typename T>
 void Stack<T>::push(T newVal) {
-    list.push_front(newVal);
+    myStack.push_front(newVal);
     size++;
 }
 
 template <typename T>
 T Stack<T>::pop() {
-    T top = list.front();
-    list.pop_front();
+    T top = myStack.front();
+    myStack.pop_front();
     size--;
     return top;
 }
 
 template <typename T>
 T Stack<T>::peek() {
-    T top = list.front();
+    T top = myStack.front();
     return top;
 }
 
 template <typename T>
 bool Stack<T>::isEmpty() {
-    return list.empty();
+    return myStack.empty();
 }
 
 template <typename T>
